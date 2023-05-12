@@ -8,7 +8,7 @@ $eliminar= "DELETE FROM tareas WHERE id='$id'";
 $resultadoEliminar = mysqli_query($conexion,$eliminar);
 
 if($resultadoEliminar){
-    header("Location:../Paginas-Admin/Tareas.php");
+    header("Location:../Vista/Paginas-Admin/Tareas.php");
 } else {
     echo"<script>alert('No se pudo eliminar'); windows.history.go(-1);</script>";
 }

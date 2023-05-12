@@ -16,10 +16,10 @@ $pago_tmp=$_FILES['pago']['tmp_name'];
 $documento_tmp=$_FILES['documento']['tmp_name'];
 $certificado_tmp=$_FILES['certificado']['tmp_name'];
 
-$route_reporte="../img/Documentos/".$reporte;
-$route_pago="../img/Documentos/".$pago;
-$route_documento="../img/Documentos/".$documento;
-$route_certificado="../img/Documentos/".$certificado;
+$route_reporte="../Vista/img/Documentos/".$reporte;
+$route_pago="../Vista/img/Documentos/".$pago;
+$route_documento="../Vista/img/Documentos/".$documento;
+$route_certificado="../Vista/img/Documentos/".$certificado;
 
 move_uploaded_file($reporte_tmp,$route_reporte);
 move_uploaded_file($pago_tmp,$route_pago);

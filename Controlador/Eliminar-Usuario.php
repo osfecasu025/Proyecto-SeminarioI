@@ -8,7 +8,7 @@ $eliminar= "DELETE FROM validardatos WHERE id='$id'";
 $resultadoEliminar = mysqli_query($conexion,$eliminar);
 
 if($resultadoEliminar){
-    header("Location:../Paginas-Admin/Aprovar-Estudiante.php");
+    header("Location:../Vista/Paginas-Admin/Aprovar-Estudiante.php");
 } else {
     echo"<script>alert('No se pudo eliminar'); windows.history.go(-1);</script>";
 }

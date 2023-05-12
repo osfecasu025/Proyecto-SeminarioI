@@ -9,7 +9,7 @@ $codigo=$_GET['codigo'];
     $consulta= "UPDATE estudiante SET evaluaciondocente = '$estudiante' WHERE codigo = '$codigo'";
     $resultado = mysqli_query($conexion,$consulta);
 
-echo "<script> location='../Paginas-Admin/Certificado.php'</script>";
+echo "<script> location='../Vista/Paginas-Admin/Certificado.php'</script>";
 
 mysqli_close($conexion);
 

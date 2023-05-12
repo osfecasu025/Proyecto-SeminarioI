@@ -17,9 +17,9 @@
         $resultado = mysqli_query($conexion,$consulta);
         if($resultado){
             $actividad_tmp=$_FILES['solucion']['tmp_name'];
-            $route_actividad="../img/Tareas/Estudiantes/".$solucion;
+            $route_actividad="../Vista/img/Tareas/Estudiantes/".$solucion;
             move_uploaded_file($actividad_tmp,$route_actividad);
-            echo "<script>alert('Se ha subido la entrega');window.location='../Paginas/Confirmado-por-Admin/Entregas-Estudiante.php'</script>";
+            echo "<script>alert('Se ha subido la entrega');window.location='../Vista/Paginas/Confirmado-por-Admin/Entregas-Estudiante.php'</script>";
         } else {
             printf("Errormessage: %s\n", mysqli_error($conexion));
         }

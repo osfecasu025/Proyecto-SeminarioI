@@ -16,7 +16,7 @@ if(isset($_POST["registro"])){
             VALUES('$documento','$nombre','$correo','$telefono','$contraseña','$direccion','$tipo')";
             $resultado = mysqli_query($conexion,$consulta);
             if($resultado){
-                echo "<script>alert('se ha enviado informe');window.location='../Paginas/IniciarSesion.php'</script>";
+                echo "<script>alert('se ha enviado informe');window.location='../Vista/Paginas/IniciarSesion.php'</script>";
 
             } else {
                printf("Errormessage: %s\n", mysqli_error($conexion));

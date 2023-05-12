@@ -6,8 +6,8 @@ if(isset($_POST["cursos"])){
             $usuarios=$_SESSION['nombreEstudent'];
             $comprobantes=$_FILES['comprobantes']['name'];
             $comprobantes_tmp=$_FILES['comprobantes']['tmp_name'];
-            $route_comprobantes="../img/Documentos/".$comprobantes;
-            $curso=$_GET['curso'];
+            $route_comprobantes="../Vista/img/Documentos/".$comprobantes;
+            $curso=$_GET['codigocurso'];
             move_uploaded_file($comprobantes_tmp,$route_comprobantes);
             $evaluacionDocente=0;
             $consultas = "INSERT INTO estudiante(codigo,comprobante,idusuario,idcurso,evaluaciondocente)

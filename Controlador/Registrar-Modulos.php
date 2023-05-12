@@ -11,7 +11,7 @@ if(isset($_POST["registrar-modulo"])){
             VALUES('$codigo','$nombre','$idcurso','$profesor')";
             $resultado = mysqli_query($conexion,$consulta);
             if($resultado){
-                header('location:' .$URL. '../Paginas-Admin/Cursos.php');
+                header('location:' .$URL. '../Vista/Paginas-Admin/Cursos.php');
                 session_start();//inicializando una sesion
                 $_SESSION['msj'] = "Se ha registrado el modulo";
             } else {

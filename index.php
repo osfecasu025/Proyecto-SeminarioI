@@ -1,6 +1,7 @@
 <?php 
     session_start(); 
     error_reporting(E_PARSE);
+    include ("Modelo/Conexion/conexion.php");
     if($_SESSION['nombreUser']=="" && $_SESSION['nombreAdmin']=="" && $_SESSION['nombreEstudent']==""){
         $_SESSION['verificarLogin']=0;
     }else{
@@ -25,13 +26,13 @@
     <title>Cursos-Profundizacion</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="Vista/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="Vista/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -70,7 +71,7 @@
             if(!$_SESSION['nombreUser']==""){//usuario puede ver los cursos disponibles y subir documentos para ser estudiante
                 echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="Paginas/Cursos.php">
+                        <a class="nav-link" href="Vista/Paginas/Cursos.php">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Cursos</span></a>
                     </li>
@@ -78,7 +79,7 @@
             } else if(!$_SESSION['nombreEstudent']=="" && $_SESSION['CodigoEstudent']==""){//estudiante sin codigo puede ver cursos y subir pagos para registrarse en uno
                 echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="Paginas/Confirmado-por-Admin/Cursos-confirmado.php">
+                        <a class="nav-link" href="Vista/Paginas/Confirmado-por-Admin/Cursos-confirmado.php">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Cursos</span></a>
                     </li>
@@ -86,7 +87,7 @@
             } else if(!$_SESSION['nombreAdmin']==""){//admin puede aprovar o rechazar solicitudes de usuarios a estudiante
                 echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="Paginas-Admin/Aprobar-Estudiante.php">
+                        <a class="nav-link" href="Vista/Paginas-Admin/Aprobar-Estudiante.php">
                             <i class="fas fa-fw fa-table"></i>
                             <span>Aprobar-Estudiantes</span>
                         </a>
@@ -119,13 +120,15 @@
                         <?php 
                             if(!$_SESSION['nombreEstudent']=="" && !$_SESSION['CodigoEstudent']==""){//Estudiante registrado en un curso
                                 echo '
-                                    <a class="collapse-item" href="Paginas/Confirmado-por-Admin/Calificaciones-Estudiante.php">Calificaciones</a>
-                                    <a class="collapse-item" href="Paginas/Confirmado-por-Admin/Entregas-Estudiante.php">Actividades</a>
+                                    <a class="collapse-item" href="Vista/Paginas/Confirmado-por-Admin/Calificaciones-Estudiante.php">Calificaciones</a>
+                                    <a class="collapse-item" href="Vista/Paginas/Confirmado-por-Admin/Entregas-Estudiante.php">Actividades</a>
+                                    <hr class="sidebar-divider">
                                 ';
                             }else if(!$_SESSION['nombreAdmin']==""){//Admin
                                 echo '
-                                    <a class="collapse-item" href="Paginas-Admin/Estudiantes-Matriculados.php">Estudiantes-Matriculados</a>
-                                    <a class="collapse-item" href="Paginas-Admin/Escoger-curso.php">Actividades-Cursos</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Estudiantes-Matriculados.php">Estudiantes-Matriculados</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Escoger-curso.php">Actividades-Cursos</a>
+                                    <hr class="sidebar-divider">
                                 ';
                             }//Si es estudiante sin curso asignado, usuariono o no está logeado no despliega nada
                         ?>
@@ -133,7 +136,7 @@
                 </div>
             </li>
 
-            <hr class="sidebar-divider">
+            
             
             
             <?php 
@@ -147,11 +150,12 @@
                             </a>
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                     <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="Paginas-Admin/Cursos.php">Lista-Cursos</a>
-                                    <a class="collapse-item" href="Paginas-Admin/Profesores.php">Lista-Profesores</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Cursos.php">Lista-Cursos</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Profesores.php">Lista-Profesores</a>
                                     </div>
                                 </div>
                         </li>
+
                     ';
             }
              ?>
@@ -168,8 +172,8 @@
                             </a>
                             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
-                                    <a class="collapse-item" href="Paginas-Admin/Pagos-Usuario.php">Pagos-Consignaciones</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Pagos-Usuario.php">Pagos-Consignaciones</a>
                                 </div>
                             </div>
                         </li>
@@ -185,7 +189,7 @@
                             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
                                   
-                                    <a class="collapse-item" href="Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
                                 </div>
                             </div>
                         </li>
@@ -200,8 +204,8 @@
                             </a>
                             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
-                                    <a class="collapse-item" href="Paginas-Admin/Pagos-Usuario.php">Pagos-Consignaciones</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Archivos-Usuario.php">Archivos-Usuario</a>
+                                    <a class="collapse-item" href="Vista/Paginas-Admin/Pagos-Usuario.php">Pagos-Consignaciones</a>
                                 </div>
                             </div>
                         </li>
@@ -229,7 +233,7 @@
                 if(!$_SESSION['nombreEstudent']=="" && !$_SESSION['CodigoEstudent']==""){//Si es estudiante con curso registrado puede solicitar su certificado
                     echo'
                         <li class="nav-item">
-                            <a class="nav-link" href="Paginas-Admin/Certificado.php">
+                            <a class="nav-link" href="Vista/Paginas-Admin/Certificado.php">
                                 <i class="fas fa-fw fa-chart-area"></i>
                                 <span>Certificado</span>
                             </a>
@@ -238,7 +242,7 @@
                 }else if(!$_SESSION['nombreAdmin']==""){//Si es admin puede ver todos los estudiantes que pueden solicitar certificado y solicitarlo por ellos
                     echo'
                         <li class="nav-item">
-                            <a class="nav-link" href="Paginas-Admin/Certificado.php">
+                            <a class="nav-link" href="Vista/Paginas-Admin/Certificado.php">
                                 <i class="fas fa-fw fa-chart-area"></i>
                                 <span>Certificado</span>
                             </a>
@@ -253,7 +257,7 @@
                     
                     echo '
                         <li class="nav-item">
-                            <a class="nav-link" href="Paginas/Confirmado-por-Admin/Previo.php">
+                            <a class="nav-link" href="Vista/Paginas/Confirmado-por-Admin/Previo.php">
                                 <i class="fa fa-credit-card-alt"></i>
                                 <span>Evaluacion-Docente</span>
                             </a>
@@ -313,7 +317,7 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">&nbsp;&nbsp;'.$_SESSION['nombreUser'].'</span>
                                             <img class="img-profile rounded-circle"
-                                                src="img/undraw_profile.svg">
+                                                src="Vista/img/undraw_profile.svg">
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -323,7 +327,7 @@
                                                 Cuenta
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
+                                            <a class="dropdown-item" href="Vista/Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Salir
                                             </a>
@@ -337,7 +341,7 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">&nbsp;&nbsp;Administrador</span>
                                             <img class="img-profile rounded-circle"
-                                                src="img/undraw_profile.svg">
+                                                src="Vista/img/undraw_profile.svg">
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -348,7 +352,7 @@
                                             </a>
                                     
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
+                                            <a class="dropdown-item" href="Vista/Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Salir
                                             </a>
@@ -362,7 +366,7 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">&nbsp;&nbsp;'.$_SESSION['nombreEstudent'].'</span>
                                             <img class="img-profile rounded-circle"
-                                                src="img/undraw_profile.svg">
+                                                src="Vista/img/undraw_profile.svg">
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -373,7 +377,7 @@
                                             </a>
                                     
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
+                                            <a class="dropdown-item" href="Vista/Paginas/salir.php" data-toggle="modal" data-target="#logoutModal">
                                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Salir
                                             </a>
@@ -387,12 +391,12 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                             <img class="img-profile rounded-circle"
-                                                src="img/undraw_profile.svg">
+                                                src="Vista/img/undraw_profile.svg">
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                             aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="Paginas/IniciarSesion.php">
+                                            <a class="dropdown-item" href="Vista/Paginas/IniciarSesion.php">
                                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Login
                                             </a>
@@ -409,17 +413,109 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">PAGINA-PRINCIPAL</h1>
+                       
                     </div>
-                    <?php
-                        if($_SESSION['verificarLogin']==0){
-                            echo '
-                                    <p> Usted aún no se ha logeado.<br>Para acceder a las funcionalidades de la página logeese dirigiendose a la parque superior derecha. </p>
-                            ';
-                        }
-                    ?>
+                    
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
                 </div>
-                <!-- End of Page Content -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Vista/img/Fondo-de-pantalla-ufps.png" class="d-block w-100" alt="..." style="max-height: 550px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Vista/img/imagenn.png" class="d-block w-100" alt="..." style="max-height: 550px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Vista/img/UFPS-cucuta.jpg" class="d-block w-100" alt="..." style="max-height: 550px;">
+                    </div>
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+       
+            
+            </div>
+            <br>
+            <br>                
+            <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">CURSOS DISPONIBLES</h3>
+                       
+                    </div>
+                            <div class="row" style="display: flex;">
+                                                                    <?php
+
+                                                                    
+                                                                    $sql = "SELECT codigo, nombre , descripcion  FROM curso ";
+                                                                        $resultada = mysqli_query($conexion,$sql);
+                                                                        
+                                                                        while($mostrar=mysqli_fetch_array($resultada) ){
+                                                                    
+                                                            
+                                                                    ?>
+                                                            
+                                                            
+                                <!-- Begin Page Content -->
+                                
+
+                                    <!-- Page Heading -->
+                                    <!-- Curso -->
+                                    <!-- Earnings (Monthly) Card Example -->
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <h5 class="text-xs font-weight-bold text-primary text-uppercase mb-1" > 
+                                                           
+                                                            <?php echo $mostrar['codigo']?>-<?php echo $mostrar['nombre']?></h5>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $mostrar['descripcion']?>
+                                                        </div>
+                                                    </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+
+                                                        </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    
+
+                                
+                                    <?php
+                                                                        
+                                        }
+
+                                    ?>
+
+                            </div>
+
+            </div>
+            
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -457,28 +553,30 @@
                 <div class="modal-body">Se cerrara la sesion actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="Paginas/salir.php">Salir</a>
+                    <a class="btn btn-primary" href="Vista/Paginas/salir.php">Salir</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="Vista/vendor/jquery/jquery.min.js"></script>
+    <script src="Vista/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="Vista/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="Vista/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="Vista/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="Vista/js/demo/chart-area-demo.js"></script>
+    <script src="Vista/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
 </body>
 
 </html>

@@ -13,7 +13,7 @@ if(isset($_POST["registrar-curso"])){
             VALUES('$codigo','$nombre','$descripcion','$precio')";
             $resultado = mysqli_query($conexion,$consulta);
             if($resultado){
-                header('location:' .$URL. '../Paginas-Admin/Cursos.php');
+                header('location:' .$URL. '../Vista/Paginas-Admin/Cursos.php');
                 session_start();//inicializando una sesion
                 $_SESSION['msj'] = "Se ha registrado el curso";
             } else {

@@ -55,7 +55,7 @@ if($nit!="" && $contraseña!=""){
             echo "<script>alert('Se ha logueado como Administrador');window.location='../index.php'</script>";
             $_SESSION['verificarLogin']=1;
         }else{
-            echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Paginas/IniciarSesion.php'</script>";
+            echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Vista/Paginas/IniciarSesion.php'</script>";
             $_SESSION['verificarLogin']=0;
         }
     }
@@ -73,7 +73,7 @@ if($nit!="" && $contraseña!=""){
             echo "<script>alert('Se ha logueado como Usuario');window.location='../index.php'</script>";
             $_SESSION['verificarLogin']=1;
         }else{
-            echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Paginas/IniciarSesion.php'</script>";
+            echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Vista/Paginas/IniciarSesion.php'</script>";
             $_SESSION['verificarLogin']=0;
         }
     }
@@ -105,7 +105,7 @@ if($nit!="" && $contraseña!=""){
                 echo "<script>alert('Se ha logeado como Estudiante con código asignado: ".$_SESSION['CodigoEstudent']."');window.location='../index.php'</script>";
             }    
           }else{
-              echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Paginas/IniciarSesion.php'</script>";
+              echo "<script>alert('Usuario o contraseña incorrectos');window.location='../Vista/Paginas/IniciarSesion.php'</script>";
               $_SESSION['verificarLogin']=0;
           }
       }

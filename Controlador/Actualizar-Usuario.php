@@ -11,7 +11,7 @@ $id=$_GET['id'];
     $sql="UPDATE validardatos SET verificar= '$verificar' WHERE id = $id";
     $resultado = mysqli_query($conexion,$consulta);
     $resultado2 = mysqli_query($conexion,$sql);
-echo "<script> location='../Paginas-Admin/Aprobar-Estudiante.php'</script>";
+echo "<script> location='../Vista/Paginas-Admin/Aprobar-Estudiante.php'</script>";
 
 mysqli_close($conexion);
 

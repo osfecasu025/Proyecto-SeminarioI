@@ -16,7 +16,7 @@ if(isset($_POST["registrar-docente"])){
             VALUES('$codigo','$documento','$nombre','$apellido','$celular','$email','$titulo','$tipo')";
             $resultado = mysqli_query($conexion,$consulta);
             if($resultado){
-                header('location:' .$URL. '../Paginas-Admin/Profesores.php');
+                header('location:' .$URL. '../Vista/Paginas-Admin/Profesores.php');
                 session_start();//inicializando una sesion
                 $_SESSION['msj'] = "Se ha registrado al Docente";
             } else {

@@ -15,7 +15,7 @@ if(isset($_POST["registrar-horario"])){
             $resultados = mysqli_query($conexion, $sql);
             
             if (mysqli_num_rows($resultados) > 0) {
-                header('location:' .$URL. '../Paginas-Admin/Modulo-Cursos.php');
+                header('location:' .$URL. '../Vista/Paginas-Admin/Modulo-Cursos.php');
                 
                 echo "Ya existe un horario registrado para este curso en esta semana y horario";
             }else{
@@ -23,7 +23,7 @@ if(isset($_POST["registrar-horario"])){
             VALUES('$nuevoidhorario','$curso','$semana','$dias_str','$horainicio','$horafinal')";
             $resultado = mysqli_query($conexion,$consulta);
             if($resultado){
-                header('location:' .$URL. '../Paginas-Admin/Modulo-Cursos.php');
+                header('location:' .$URL. '../Vista/Paginas-Admin/Modulo-Cursos.php');
                 session_start();//inicializando una sesion
                 $_SESSION['horario'] = "Se ha registrado el Horario";
             } else {
